@@ -1,0 +1,17 @@
+server:
+  port: 8443
+  ssl:
+    enabled: true
+    key-store-type: PKCS12
+    key-store: classpath:keystore/localhost.p12
+    key-store-password: changeit
+    key-alias: localhost
+
+# Force HTTPS (optional Tomcat redirect can be added if you also open 8080)
+# management endpoints can be configured separately if needed
+
+spring:
+  datasource:
+    # We build the URL in DbConfig to inject TLS options & env vars securely.
+    hikari:
+      maximum-pool-size: 10
